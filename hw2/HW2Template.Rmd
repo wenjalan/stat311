@@ -1,0 +1,112 @@
+---
+title: "Homework 2"
+author: ""
+date: "`r Sys.Date()`"
+output: openintro::lab_report
+---
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+library(openintro)
+```
+
+### Problem 1
+#### a)
+
+
+#### b)
+
+
+#### c)
+
+
+#### d)
+
+
+### Problem 2
+
+
+### Problem 3
+#### a)
+
+
+#### b)
+
+
+#### c)
+
+
+### Problem 4
+
+#### a)
+```{r Read in Gallup Data}
+# Education data
+GEd <- read_csv("GallupByEd.csv", show_col_types=FALSE)
+GEd$Education <- factor(GEd$Education, levels=c("<= HS Grad", "Some College", "College Grad"))
+GEd$Response <- factor(GEd$Response)
+levels(GEd$Response)
+(levels(GEd$Response) <- c("Env", "Econ", "Equal", "No Op"))
+
+# Party ID data
+GPI <- read_csv("GallupByPI.csv", show_col_types=FALSE)
+GPI$PartyID <- factor(GPI$PartyID)
+GPI$PartyID <- recode_factor(GPI$PartyID, R = "Rep", D = "Dem", I = "Ind")
+levels(GPI$PartyID)
+GPI$Response <- factor(GPI$Response)
+levels(GPI$Response)
+(levels(GPI$Response) <- c("Env", "Econ", "Equal", "No Op"))
+```
+
+#### b)
+
+
+#### c)
+
+
+#### d)
+
+
+#### e)
+
+
+#### f)
+
+
+#### g)
+
+
+#### h)
+
+
+### Problem 5
+#### a)
+
+
+#### b)
+
+
+#### c)
+
+
+#### d)
+```{r Read in Diet Data}
+PD <- read_csv("PopularDiets.csv", show_col_types=FALSE)
+PD$Diet <- factor(PD$Diet)
+PD$Completion <- factor(PD$Completion)
+(PD.C <- PD %>% filter(Completion == "completed"))
+```
+
+
+#### e)
+
+
+#### f)
+
+
+#### g)
+
+
+#### h)
+
+
+...

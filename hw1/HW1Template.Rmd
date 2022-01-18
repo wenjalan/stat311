@@ -1,0 +1,145 @@
+---
+title: "Homework 1"
+author: "Your Name Goes Here"
+date: "`r Sys.Date()`"
+output: openintro::lab_report
+---
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+library(openintro)
+```
+
+### Problem 1
+#### Part a)
+Whether or not the launch was a success or a failure, and the type of launching agency it was.
+
+#### Part b)
+Launching agency is a categorical:nominal. Launch state is categorical:nominal. The number of launches that were a success or a failure is numerical:discrete.
+
+#### Part c)
+Explanatory: Type of Launching Agency. Response: Success or Failure
+
+### Problem 2
+#### Part a)
+Observational study. Study does not alter or give treatment to population.
+#### Part b)
+Screen time.
+#### Part c)
+Psychological well-being.
+#### Part d)
+Good chance, a sample size of n=17,247 is sufficient to draw generalizations.
+#### Part e)
+Causal relationships cannot be established using correlation.
+
+### Problem 3
+#### Part a)
+Simple randomized sampling.
+#### Part b)
+Stratified sampling.
+#### Part c)
+Cluster sampling.
+#### Part d)
+Stratified random sampling.
+#### Part e)
+Convenience sampling.
+
+### Problem 4
+#### Part a)
+Population: Children between ages 5 and 15
+#### Part b)
+Might be generalization, but replication studies would be required. Study cannot establish causal relationships.
+
+### Problem 5
+#### Part a)
+Parameter.
+#### Part b)
+Sample statistic.
+#### Part c)
+Sample.
+#### Part d)
+Variable.
+
+### Problem 6
+
+#### Part a)
+$C=2 \pi r$.
+$A = \pi r^2$.
+
+#### Part b)
+```{r chunk-code-label}
+rad <- c(0.25, 1.5)
+C <- 2 * pi * rad
+```
+
+#### Part c)
+The circumferences of circles with radii `r rad` are `r C`.
+
+Example code showing how you can include equations. You will need to replace this with the correct formulas. Can also use \% to get a percent sign in an answer. Note that a single $ is used for an inline equation. A double $$ is used if you want the equation centered on it's own line.
+
+$xy$   $x^2$
+$$A = 1/2 \times b \times h$$
+
+### Problem 7
+``` {r Read in Patient Data}
+# We are providing the code for reading in the data and converting
+# Sex and MaritalStat to type factor
+PDat <- read_csv("Patient_Data.csv")
+# Create a factor variable for Sex; the levels will be in 
+# alphabetical order
+PDat$Sex <- factor(PDat$Sex)
+# Create a factor variable with a specified order to the levels
+# of MaritalStat. Marital status is not an ordinal variable, 
+# but you can still set the order of the levels to control 
+# the order they are printed in output
+PDat$MaritalStat <- factor(PDat$MaritalStat,
+                           level=c("S","M","D","W"))
+############## 
+# The code on lines 77 - 79 demonstrate the use of functions 
+# you will need for parts a) - c). Copy/paste and edit the code
+# as needed for each part of the problem. After you figure out
+# the code you need for each part, comment out or remove these 
+# lines so they do not clutter up your assignment with extra output.
+# PDat %>% count(Sex)
+# PDat.F <- PDat %>% filter(Sex == "F")
+# glimpse(PDat.F)
+```
+
+#### Part a)
+```{r count observations in maritial stat}
+PDat %>% count(ID)
+PDat %>% count(Sex)
+PDat %>% count(MaritalStat)
+PDat %>% count(Age)
+PDat %>% count(Weight)
+PDat %>% count(TotChol)
+PDat %>% count(SystolicP)
+```
+#### Part b)
+```{r find widowed}
+PDat.WIDOWED = PDat %>% filter(MaritalStat == "D")
+glimpse(PDat.WIDOWED)
+```
+
+#### Part c)
+```{r calculate percent widowed female}
+nFemaleDivorced <- PDat.WIDOWED %>% filter(Sex =="F") %>% count()
+nDivorced <- PDat.WIDOWED %>% count()
+percentDivorcedFemale <- nFemaleDivorced / nDivorced
+```
+`r percentDivorcedFemale` of divorced individuals are female.
+
+### Problem 8
+#### Part a)
+Observational. The study does not apply a treatment or alter the participants' behavior in an intentional way.
+#### Part b)
+Individuals with knowlege, either first hand or second hand, of the disease schizophrenia and its connotations.
+#### Part c)
+Researchers surveyed those familiar with the disease either as a stakeholder or a victim, with n = 1190.
+#### Part d)
+After being debriefed on the situation, 74% of individuals were in favor of renaming the disease.
+#### Part e)
+1. Limited querying of minority populations
+2. Larger than normal (67%) amount of respondents were female
+#### Part f)
+To understand where improvements in the study could have been made for future studies to be done.
